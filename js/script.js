@@ -96,8 +96,8 @@ function makeTodo(toDoObject) {
     return container;
 };
 
-function addTaskToCompleted(toDoId) {
-    const toDoTarget = findTodo(toDoId);
+function addTaskToCompleted(todoId) {
+    const toDoTarget = findTodo(todoId);
 
     if(toDoTarget == null) return;
 
@@ -114,17 +114,17 @@ function findTodo(todoId) {
     return null;
 };
 
-function removeTaskFromCompleted(toDoId) {
-    const toDoTarget = findTodoIndex(toDoId);
+function removeTaskFromCompleted(todoId) {
+    const toDoTarget = findTodoIndex(todoId);
 
-    if(toDoTarget == -1) return;
+    if(toDoTarget === -1) return;
 
     todos.splice(toDoTarget, 1);
     document.dispatchEvent(new Event(RENDER_EVENT));
 };
 
-function undoTaskFromCompleted(toDoId) {
-    const toDoTarget = findTodo(toDoId);
+function undoTaskFromCompleted(todoId) {
+    const toDoTarget = findTodo(todoId);
 
     if(toDoTarget == null) return;
 
@@ -132,9 +132,9 @@ function undoTaskFromCompleted(toDoId) {
     document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
-function findTodoIndex(toDoId) {
-    for(const index of todos) {
-        if(todos[index].id == toDoId) {
+function findTodoIndex(todoId) {
+    for(const index in todos) {
+        if(todos[index].id == todoId) {
             return index;
         }
     }
